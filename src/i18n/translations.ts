@@ -204,7 +204,7 @@ const ar: Translations = {
 
   lettersTitle: 'تلات رسايل صغيرة ليكي',
   lettersIntro: 'دوسي على الرساله عشان تفتحيها.',
-  lettersHint: 'اضغطي للفتح',
+  lettersHint: 'دوسي علي الرساله',
   closeLetter: 'إغلاق الرسالة',
   skipLetter: 'تخطّي',
   letters: [
