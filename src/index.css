@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+::-webkit-scrollbar{
+  display: none;
+}
+body {
+  @apply font-display text-lg font-medium text-rose-950 antialiased;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+.dark body { @apply text-rose-50; }
+
+/* Smooth theme transition on colours */
+body, section, article, button, h1, h2, h3, p, div {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+}
+
+:focus-visible {
+  outline: 3px solid #f43f5e;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+.dark :focus-visible { outline-color: #f9a8d4; }
+
+.heart-glow { filter: drop-shadow(0 0 18px rgba(244, 63, 94, 0.75)); }
+
+/* ---------- Arabic typography ---------- */
+/* Latin text keeps its fonts; Arabic glyphs fall through to Amiri (body) and Aref Ruqaa (script). */
+html[lang='ar'] body {
+  font-size: 1.25rem;
+  line-height: 1.9;
+}
+/* letter-spacing and faux-italics break/ruin Arabic joining */
+html[lang='ar'] * { letter-spacing: 0 !important; }
+html[lang='ar'] .italic { font-style: normal; }
+/* taller lines so Arabic ascenders/diacritics are not clipped by gradient text */
+html[lang='ar'] .font-script { line-height: 1.8; }
+html[lang='ar'] .font-hand { line-height: 1.7; }
