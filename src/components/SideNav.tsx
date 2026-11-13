@@ -25,7 +25,7 @@ export default function SideNav() {
   const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <nav aria-label={t.navLabel} className="fixed end-1 top-1/2 z-30 -translate-y-1/2">
+    <nav aria-label={t.navLabel} className="fixed end-1 top-1/2 z-30 hidden -translate-y-1/2 sm:block">
       <ul className="flex flex-col items-center">
         {t.nav.map(({ id, label }) => (
           <li key={id}>

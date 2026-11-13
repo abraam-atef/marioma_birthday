@@ -59,6 +59,13 @@ export default function LetterModal({ letter, onClose }: Props) {
     }
   }, [onClose])
 
+  // on short screens (landscape phones) keep the paragraph being written visible
+  useEffect(() => {
+    if (reduce) return
+    const sel = signed ? '[data-seg="sign"]' : current > 0 ? `[data-seg="${current}"]` : null
+    if (sel) dialogRef.current?.querySelector(sel)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [current, signed, reduce])
+
   // if the Skip button was focused when it disappears, hand focus to Close
   useEffect(() => {
     if (done && document.activeElement === skipRef.current) closeRef.current?.focus()
@@ -79,7 +86,7 @@ export default function LetterModal({ letter, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative max-h-[88vh] w-full max-w-lg overflow-y-auto rounded-md bg-gradient-to-b from-[#fffdf8] to-[#fff1e6] px-7 pb-9 pt-12 text-rose-950 shadow-2xl shadow-rose-900/40 sm:px-10"
+        className="relative max-h-[88vh] w-full max-w-lg supports-[height:100dvh]:max-h-[88dvh] overflow-y-auto rounded-md bg-gradient-to-b from-[#fffdf8] to-[#fff1e6] px-7 pb-9 pt-12 text-rose-950 shadow-2xl shadow-rose-900/40 sm:px-10"
         initial={{ opacity: 0, y: 80, scale: 0.9, rotateX: 25 }}
         animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
         exit={{ opacity: 0, y: 60, scale: 0.92 }}
@@ -138,7 +145,7 @@ export default function LetterModal({ letter, onClose }: Props) {
 
         <div className="mt-6 space-y-4 text-xl leading-[1.75] text-rose-950">
           {paragraphs.map((p, i) => (
-            <p key={i} className="italic">
+            <p key={i} data-seg={i + 1} className="italic">
               <TypedText chars={parts[i + 1]} count={counts[i + 1]} cursor={current === i + 1} />
             </p>
           ))}
@@ -146,6 +153,7 @@ export default function LetterModal({ letter, onClose }: Props) {
 
         {/* signature: space is reserved, then it is "signed" after the last word */}
         <motion.div
+          data-seg="sign"
           className="mt-8 text-end"
           initial={false}
           animate={{ opacity: signed ? 1 : 0, y: signed ? 0 : 10, filter: signed ? 'blur(0px)' : 'blur(6px)' }}

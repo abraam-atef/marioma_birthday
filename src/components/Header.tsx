@@ -7,7 +7,10 @@ export default function Header({ theme, onToggleTheme }: { theme: Theme; onToggl
   return (
     <header
       className="fixed end-4 z-40 flex items-center gap-2"
-      style={{ top: 'max(1rem, env(safe-area-inset-top))' }}
+      style={{
+        top: 'max(1rem, env(safe-area-inset-top))',
+        marginInlineEnd: 'max(env(safe-area-inset-left), env(safe-area-inset-right))',
+      }}
     >
       <LanguageSwitcher />
       <ThemeToggle theme={theme} onToggle={onToggleTheme} />

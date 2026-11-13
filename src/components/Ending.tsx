@@ -34,7 +34,7 @@ export default function Ending() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 1.4, delay: 0.3 }}
-        className="relative mt-10 max-w-3xl bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 bg-clip-text text-5xl font-bold leading-tight tracking-wide text-transparent sm:text-7xl dark:from-pink-300 dark:via-rose-300 dark:to-pink-400"
+        className="relative mt-10 max-w-3xl bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 bg-clip-text text-4xl font-bold leading-tight tracking-wide text-transparent min-[400px]:text-5xl sm:text-7xl dark:from-pink-300 dark:via-rose-300 dark:to-pink-400"
       >
         {c.finalMessage}
       </motion.h2>
@@ -44,7 +44,7 @@ export default function Ending() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5, delay: 1 }}
-        className="relative mt-6 font-script text-5xl leading-snug text-rose-600 sm:text-6xl dark:text-pink-200"
+        className="relative mt-6 font-script text-4xl leading-snug text-rose-600 min-[400px]:text-5xl sm:text-6xl dark:text-pink-200"
       >
         {c.finalSubMessage}
       </motion.p>

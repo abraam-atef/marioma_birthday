@@ -54,7 +54,7 @@ export default function Envelope({ letter, opened, hint, onOpen }: Props) {
           style={{ clipPath: FRONT_CLIP, zIndex: 20 }}
         />
         <span
-          className="absolute inset-x-0 bottom-[12%] z-30 px-3 font-script text-3xl leading-tight text-rose-700 sm:text-[1.7rem] dark:text-pink-100"
+          className="absolute inset-x-0 bottom-[12%] z-30 px-3 font-script text-2xl leading-tight text-rose-700 sm:text-[1.7rem] lg:text-2xl xl:text-3xl dark:text-pink-100"
         >
           {letter.envelopeTitle}
         </span>

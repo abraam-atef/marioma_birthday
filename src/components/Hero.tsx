@@ -58,7 +58,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1, ease: 'easeOut' }}
-        className="bg-gradient-to-r from-rose-600 via-pink-500 to-red-500 bg-clip-text font-script text-6xl leading-[1.25] text-transparent sm:text-8xl dark:from-pink-300 dark:via-rose-300 dark:to-pink-400"
+        className="bg-gradient-to-r from-rose-600 via-pink-500 to-red-500 bg-clip-text font-script text-5xl leading-[1.25] text-transparent min-[400px]:text-6xl sm:text-8xl dark:from-pink-300 dark:via-rose-300 dark:to-pink-400"
       >
         {fill(c.greeting)}
       </motion.h1>
@@ -73,7 +73,7 @@ export default function Hero() {
       </motion.p>
 
       {/* Cake */}
-      <div className="relative mt-8 w-full max-w-[320px] sm:max-w-[360px]">
+      <div className="relative mt-8 w-full max-w-[300px] min-[400px]:max-w-[320px] sm:max-w-[360px] lg:max-w-[420px]">
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}

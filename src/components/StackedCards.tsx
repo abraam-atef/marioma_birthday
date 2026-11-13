@@ -45,7 +45,7 @@ const Card = memo(function Card({ index, pos, lifting, content, label, onAdvance
   const target = lifting ? LIFT : slot
   const front = pos === 0
   const shell =
-    'absolute inset-x-0 top-0 h-[360px] overflow-hidden rounded-[1.6rem] border bg-gradient-to-br shadow-[0_14px_30px_-10px_rgba(159,18,57,0.45)] dark:shadow-[0_14px_34px_-8px_rgba(0,0,0,0.75)] sm:h-[400px] ' +
+    'absolute inset-0 overflow-hidden rounded-[1.6rem] border bg-gradient-to-br shadow-[0_14px_30px_-10px_rgba(159,18,57,0.45)] dark:shadow-[0_14px_34px_-8px_rgba(0,0,0,0.75)] ' +
     PALETTES[index % PALETTES.length]
 
   return (
@@ -162,7 +162,19 @@ export default function StackedCards<T>({ items, renderCard, nextLabel, hint, an
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative h-[430px] w-full max-w-[320px] sm:h-[470px] sm:max-w-[400px]">
+      <div className="relative w-full max-w-[320px] min-[380px]:max-w-[340px] sm:max-w-[400px] lg:max-w-[440px]">
+        {/* Invisible sizer: all cards overlap in one grid cell, so the tallest one sets the height.
+            Nothing is ever clipped, on any screen width, font or language. */}
+        <div aria-hidden className="pointer-events-none invisible grid min-h-[300px] border border-transparent">
+          {contents.map((content, i) => (
+            <div key={i} className="col-start-1 row-start-1">
+              {content}
+            </div>
+          ))}
+        </div>
+        <div className="h-14" /> {/* room for the cards peeking out behind the pile */}
+
+        <div className="absolute inset-x-0 top-0 bottom-14">
         {items.map((_, i) => {
           const pos = order.indexOf(i)
           return (
@@ -178,6 +190,8 @@ export default function StackedCards<T>({ items, renderCard, nextLabel, hint, an
             />
           )
         })}
+
+        </div>
 
         {/* heart + sparkle feedback when a card moves */}
         {puff > 0 && (

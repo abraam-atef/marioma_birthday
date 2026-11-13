@@ -46,7 +46,7 @@ export default function Letters() {
         <p className="mt-2 text-xl text-rose-900/75 dark:text-rose-100/75">{c.lettersIntro}</p>
       </motion.div>
 
-      <ul className="mx-auto grid max-w-sm gap-6 md:max-w-none md:grid-cols-3 md:gap-10">
+      <ul className="mx-auto grid max-w-sm gap-6 lg:max-w-none lg:grid-cols-3 lg:gap-8 xl:gap-10">
         {c.letters.slice(0, 3).map((l, i) => (
           <motion.li
             key={l.id}

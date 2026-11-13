@@ -20,12 +20,12 @@ export default function Qualities() {
   const renderCard = useCallback((q: Quality, i: number) => {
     const Icon = ICONS[q.icon]
     return (
-      <div className="flex h-full flex-col px-7 pb-7 pt-12 sm:px-9 sm:pt-14">
+      <div className="flex h-full flex-col px-6 pb-6 pt-11 sm:px-9 sm:pb-7 sm:pt-14">
         <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400 to-pink-500 text-white shadow-md shadow-rose-900/30">
           <Icon aria-hidden size={28} />
         </span>
-        <h3 className="font-script text-5xl leading-tight text-[var(--accent)]">{q.title}</h3>
-        <p className="mt-2 text-xl leading-relaxed sm:text-[1.35rem]">{q.description}</p>
+        <h3 className="font-script text-4xl leading-tight text-[var(--accent)] sm:text-5xl">{q.title}</h3>
+        <p className="mt-2 text-lg leading-relaxed sm:text-[1.35rem]">{q.description}</p>
         <p className="mt-auto pt-4 font-hand text-xl text-[var(--accent)]">
           {c.qualitiesCardNote.replace('{n}', formatNumber(i + 1))}
         </p>
